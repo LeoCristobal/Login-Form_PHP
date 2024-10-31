@@ -48,30 +48,54 @@
   }
 </script>
 
-                
-                <!-- Signup Section -->
-                <div class="card-back">
-                  <div class="center-wrap">
-                    <div class="section text-center">
-                      <form action="register.php" method="post"> <!-- Ensure this points to the correct script -->
-                        <h4 class="mb-3 pb-3">Sign Up</h4>
-                        <div class="form-group">
-                            <input type="text" class="form-style" placeholder="Full Name" name="name" required>
-                            <i class="input-icon uil uil-user"></i>
-                        </div>
-                        <div class="form-group mt-2">
-                            <input type="email" class="form-style" placeholder="Email" name="email" required>
-                            <i class="input-icon uil uil-at"></i>
-                        </div>
-                        <div class="form-group mt-2">
-                            <input type="password" class="form-style" placeholder="Password" name="password" required>
-                            <i class="input-icon uil uil-lock-alt"></i>
-                        </div>
-                        <button type="submit" class="btn mt-4" name="send">Register</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+
+               <!-- Signup Section -->
+<div class="card-back">
+  <div class="center-wrap">
+    <div class="section text-center">
+      <h4 class="mb-3 pb-3">Sign Up</h4>
+      <form id="signupForm">
+        <div class="form-group">
+          <input type="text" class="form-style" placeholder="Full Name" name="name" required>
+          <i class="input-icon uil uil-user"></i>
+        </div>
+        <div class="form-group mt-2">
+          <input type="email" class="form-style" placeholder="Email" name="email" required>
+          <i class="input-icon uil uil-at"></i>
+        </div>
+        <div class="form-group mt-2">
+          <input type="password" class="form-style" placeholder="Password" name="password" required>
+          <i class="input-icon uil uil-lock-alt"></i>
+        </div>
+        <!-- JavaScript handles form submission -->
+        <button type="button" class="btn mt-4" onclick="registerUser()">Register</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function registerUser() {
+    // Collect form data
+    const formData = new FormData(document.getElementById('signupForm'));
+
+    // Send form data to register.php via AJAX
+    fetch('register.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+      // Optionally alert the user
+      alert(data);
+
+      // Redirect to Google after registration
+      window.location.href = 'https://www.google.com';
+    })
+    .catch(error => console.error('Error:', error));
+  }
+</script>
+
               </div>
             </div>
           </div>
