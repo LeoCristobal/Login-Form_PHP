@@ -180,3 +180,21 @@ h6 span{
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
 
+/* Styles for larger screens (PCs, tablets) */
+@media (min-width: 768px) {
+  .container {
+      max-width: 1200px;
+      margin: 0 auto;
+  }
+}
+
+/* Styles for mobile screens */
+@media (max-width: 767px) {
+  .container {
+      padding: 10px;
+  }
+  .text-large {
+      font-size: 18px;
+  }
+}
+
