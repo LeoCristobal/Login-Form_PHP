@@ -8,8 +8,7 @@ if ($conn->connect_error) {
 
 // Process form submission
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Check if the form was submitted with the 'send' button
-    if (isset($_POST['send'])) {
+    if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])) {
         // Retrieve and sanitize inputs
         $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
@@ -24,12 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Execute the statement and check for success
         if ($stmt->execute()) {
-            echo "<script>
-                    alert('User registered successfully!');
-                    window.location.href = 'https://www.google.com';
-                  </script>";
+            echo "User registered successfully!";
         } else {
-            echo "<script>alert('Error: " . $stmt->error . "');</script>";
+            echo "Error: " . $stmt->error;
         }
 
         // Close statement
